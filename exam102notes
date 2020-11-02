@@ -1,4 +1,12 @@
 
+Linux based distributions
+1 - Ubuntu --> choice for desktop Linux
+2 - centos7 ---> free and based on RHEL Enterprise Linux
+3 - Debian
+4 - RHEL --> If money is there make use of it
+5 - Fedora
+
+
 ssh parent configurations are present in ----> /etc/ssh/ssh_config
 
 under every user folder there is .ssh directory which will have known_hosts
