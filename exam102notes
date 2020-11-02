@@ -1,1 +1,33 @@
 
+ssh parent configurations are present in ----> /etc/ssh/ssh_config
+
+under every user folder there is .ssh directory which will have known_hosts
+
+ssh-keygen will generate a strong 2048 bit length key pair and RSA encryption
+if you want to customize the key gen preparation then 
+ssh-keygen -b 1024 -t DSA. ---> do not use this 1024 bit length as it is a weaker key
+
+Enter passphrase for an option ---> this will allow multi factor authentication , highly secure environments will utlize this..
+
+id_rsa ---> will stay on the system that was created and we will not share it with anyone.
+id_rsa.pub  ---> will be the key that is copied over to the remote system
+
+know_hosts ---> when we make a remote connection with a key pair this file will be populated with the fingerprint of the remote system.
+
+ssh-copy-id ---> will copy over the public key to another system
+
+authorized_keys is a file that will be present on a system that will have the list of public keys that 
+it will accept in order to provide a successful remote connection.
+
+how to avoide the passphrase while logging in ?
+add the ssh-add wrapper and add the keypair so that you are not asked for the passphrase once again.
+
+ssh -X --> enables X11 forwarding
+ssh -x --> disables X11 forwarding
+X11 forwarding is only used when there is a graphical user interface.
+
+
+
+
+
+
