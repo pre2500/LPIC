@@ -6,7 +6,25 @@ Linux based distributions
 4 - RHEL --> If money is there make use of it
 5 - Fedora
 
+---------------------------
+GPG
+---------------------------
+GPG is used to exchange encrypted files between two systems. We will need a private and a public key.
 
+Any key generating system depends upon an concept called as ENTROPY in order to generate a key. 
+The complexity of the key depends upon how much random data
+it is aware of in order to generate the key. So for a new system that has been launched you will have very less random data.
+
+rngd utility is used to generate random numbers and increase the entropy as the default entropy will be slow as it pulls data from only hardware
+devices (location --> /dev/random)
+
+
+
+
+
+---------------------------
+SSH
+---------------------------
 ssh parent configurations are present in ----> /etc/ssh/ssh_config
 
 under every user folder there is .ssh directory which will have known_hosts
