@@ -1,0 +1,16 @@
+Monitoring Linux systems
+
+1 - Install the sysstat package using the following commands:
+yum install -y sysstat
+
+2 - Run the following commands quickly to monitor the system
+free -h
+df -h
+vmstat 1 4
+iostat -y 1 3
+iostat -cy 1 3
+top <-- locate PID(s) that are taking up a large amount of CPU (gzip and cat)
+
+Diff between free and vmstat ?
+free displays the total amount of free and used physical and swap memory in the system, as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
+vmstat reports information about processes, memory, paging, block IO, traps, and cpu activity.
