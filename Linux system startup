@@ -51,6 +51,19 @@ Here the K links will be killed and S links will be started.
 
 How to modify the run levels ?
 
+You can modify the init file itself under the various run levels of the particular service. 
+But in order for it to get affected you need delete and create the service back.
 
 
+How to check the current run level ?
+
+[centos@sbphcdg175-usw2 rc4.d]$ runlevel
+N 3
+The above output indicates the current runlevel is 3 and there was no previous run levels.
+
+The init.d directory contains initialization scripts for all the services on our system. 
+These scripts can be called to stop and start a service, and can be modified to enable or disable a service for a specific runlevel.
+
+Systemd has become the standard initialization process for most Linux Distributions. 
+Unlike SysVinit which started service one after the other, Systemd implements a parallel model. 
 
