@@ -67,3 +67,25 @@ These scripts can be called to stop and start a service, and can be modified to 
 Systemd has become the standard initialization process for most Linux Distributions. 
 Unlike SysVinit which started service one after the other, Systemd implements a parallel model. 
 
+When the system is powered on first the BIOS (Basic Input and Output system) gets called for or UEFI (Unified extensible firmware interface - 
+only in modern system ).
+
+BIOS or UEFI otherwise called as firmware. Firware is the code tied up to any hardware.
+
+It goes on checks if all the input and output devices are all setup correctly.
+
+If all the checks pass then it looks out for MBR (Master boot record ) in one of the connected devices and loads it up and passed it to bootloader.
+
+Different type of bootloaders are there , in our case it will be grub (grub version2 )
+
+It will load the kernel and the initramfs images. the kernel then loads the root file system and runs the main initalization process.
+
+
+
+
+
+
+
+
+
+
