@@ -70,6 +70,33 @@ Unlike SysVinit which started service one after the other, Systemd implements a 
 When the system is powered on first the BIOS (Basic Input and Output system) gets called for or UEFI (Unified extensible firmware interface - 
 only in modern system ).
 
+Systemd has become the standard initialization process for most Linux Distributions. 
+Unlike SysVinit which started service one after the other, Systemd implements a parallel model.
+
+Systemd has unit files. These unit files can either be a service or target or ?
+
+
+To interact with systemd we use systemctl commands.
+
+How to modify the runlevels ?
+
+For eg: Use the chkconfig command to disable the crond service for runlevels 2 and 4:
+chkconfig --level 24 crond off
+
+Use the chkconfig to enable the httpd service for runlevels 3 and 5:
+chkconfig --level 35 httpd on
+
+Modify the Initialization Script for the Postfix Service on the CentOS Server
+vi the script --> /etc/rc.d/init.d/postfix
+
+Remove postfix service - chkconfig --del postfix
+Add postfix service - chkconfig --add postfix
+
+Sysinit command to remove a service --- update-rc.d nginx remove
+
+fsck
+
+
 BIOS or UEFI otherwise called as firmware. Firware is the code tied up to any hardware.
 
 It goes on checks if all the input and output devices are all setup correctly.
@@ -80,9 +107,38 @@ Different type of bootloaders are there , in our case it will be grub (grub vers
 
 It will load the kernel and the initramfs images. the kernel then loads the root file system and runs the main initalization process.
 
+---------
+UEFI
+---------
+Support both MBR and GPT (GUID partition table)
+
+32bit or 64 bit mode --> this allows a GUI to come up as part of startup
 
 
 
+--------------------
+fsck
+--------------------
+
+fsck -- In the case of an unforeseen event - power outage, human error, etc. - a filesystem can become corrupted making it in accessible and unusable.
+
+fsck will check and repair a filesystem
+
+it will repair the filesystem that is mentioned in /etc/fstab . There will be a UUID present that UUId will be coming from the output blkid (block id).
+
+fsck <mention the name of the filesystem>
+
+To run the repair on the root filesystem we need to run xfs_repair command.
+
+Any filesystem that is mounted means we cannot run the fsck command. unmount the filesystem and then run the repair . Do this only if it is not a root filesystem.
+
+How to delibarately corrupt the root filesystem ? change the first mb of the mbr record.
+
+dd if=/dev/zero of=/dev/nvme1np1 bs=1k count=1024
+
+after running the above command if you try to mount the filesystem using mount -a , it would not be able to mount.
+
+you can also check if the filesystem is actually corrupted. fsck /dev/nvme1np1 .. it will mention a bad logic block
 
 
 
