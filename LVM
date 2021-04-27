@@ -1,1 +1,23 @@
+LVM - Logical volume management
+
+Before creating Logical volumes we would need to know create other things.
+
+Step 1 - Create physical volumes from raw devices or block devices.
+
+[centos@sbphcdg175-usw2 ~]$ lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  40G  0 disk 
+└─xvda1 202:1    0  40G  0 part /
+
+the above output shows there is one block device attached to the instance and that one device is also partioned as xvda1.
+lsblk output shows devices whether they are mounted or not.
+
+mount command should devices that are mounted.
+for eg:
+[centos@sbphcdg175-usw2 ~]$ mount | grep /dev/xvda1
+/dev/xvda1 on / type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+/dev/xvda1 on /var/lib/docker/containers type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+/dev/xvda1 on /var/lib/docker/overlay2 type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+
+
 
