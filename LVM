@@ -19,5 +19,38 @@ for eg:
 /dev/xvda1 on /var/lib/docker/containers type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
 /dev/xvda1 on /var/lib/docker/overlay2 type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
 
+Creating Physical Volumes and Volume Groups
+---> In order to follow on the lecture you need to install 
+yum install lvm2
+
+lsblk will display the disk and partitions. we will create physical volumes using pvcreate command.
+
+pvcreate <partition_name>
+pvcreate /dev/nvme1n1p1
+pvcreate /dev/nvme1n1p2
+
+Display's all the created physical volumes
+1 - pvs 
+2 - pvdisplay
+
+Command to create volume groups
+vgcreate test_vg /dev/nvme1n1p1 /dev/nvme1n1p2
+
+Display's all the created physical volumes
+1 - vgs 
+2 - vgdisplay
+
+Command to extend created volume groups
+vgextend test_vg /dev/nvme1n1p3
+
+Command to extend rename volume groups
+vgextend test_vg dev_vg
+
+Command to extend remove volume group
+vgextend test_vg dev_vg
+
+
+
+
 
 
